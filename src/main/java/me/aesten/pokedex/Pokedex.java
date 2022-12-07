@@ -1,32 +1,57 @@
 package me.aesten.pokedex;
 
 
-import me.aesten.pokedex.controllers.PokemonMapper;
-import me.aesten.pokedex.models.Pokemon;
+import me.aesten.pokedex.controllers.PokemonBasicMapper;
+import me.aesten.pokedex.controllers.PokemonDescribedMapper;
+import me.aesten.pokedex.models.PokemonBasic;
+import me.aesten.pokedex.models.PokemonDescribed;
 import me.aesten.pokedex.services.HttpPokemonRequest;
 import me.aesten.pokedex.services.HttpPokemonResponse;
 import me.aesten.pokedex.services.SqlPokemonRequest;
 import me.aesten.pokedex.services.SqlPokemonResponse;
+import me.aesten.pokedex.views.PokemonBasicVisualizer;
+import me.aesten.pokedex.views.PokemonDescribedVisualizer;
 
 public class Pokedex {
     public static void main(String[] args) {
-        System.out.println("Java version " + System.getProperty("java.version"));
-        System.out.println("It's working !");
-        if (args.length > 0) {
-            System.out.println("Vous avez fourni l'argument " + args[0]);
+        if (args.length == 0) {
+            System.err.println("You haven't provided any argument!");
+            System.exit(0);
         }
 
-        HttpPokemonRequest httpRequest = HttpPokemonRequest.create().setRequestPokemonId(1).build();
-        HttpPokemonResponse httpResponse = httpRequest.run();
-        SqlPokemonRequest sqlRequest = SqlPokemonRequest.create().setRequestPokemonId(1).build();
-        SqlPokemonResponse sqlResponse = sqlRequest.run();
+        else if (args.length == 1) {
+            int id = Integer.parseInt(args[0]);
 
-        PokemonMapper mapper = new PokemonMapper();
-        Pokemon pokemon1 = mapper.map(httpResponse);
-        Pokemon pokemon2 = mapper.map(sqlResponse);
+            HttpPokemonRequest httpRequest = HttpPokemonRequest.create().setRequestPokemonId(id).build();
+            HttpPokemonResponse httpResponse = httpRequest.run();
+            PokemonBasicMapper mapper = new PokemonBasicMapper();
+            PokemonBasic pokemon = mapper.map(httpResponse);
+            PokemonBasicVisualizer visualizer = new PokemonBasicVisualizer(pokemon);
 
-        System.out.println(pokemon1.getName());
-        System.out.println(pokemon2.getName());
+            System.out.println("===================");
+            visualizer.print();
+            System.out.println("===================");
+        }
+
+        else if (args.length == 2) {
+            int id = Integer.parseInt(args[0]);
+            String database = args[1];
+
+            SqlPokemonRequest sqlRequest = SqlPokemonRequest.create().setRequestPokemonId(id).setRequestDatabase(database).build();
+            SqlPokemonResponse sqlResponse = sqlRequest.run();
+            PokemonDescribedMapper mapper = new PokemonDescribedMapper();
+            PokemonDescribed pokemon = mapper.map(sqlResponse);
+            PokemonDescribedVisualizer visualizer = new PokemonDescribedVisualizer(pokemon);
+
+            System.out.println("===================");
+            visualizer.print();
+            System.out.println("===================");
+        }
+
+        else {
+            System.err.println("Too many arguments!");
+            System.exit(0);
+        }
     }
 
     public String getName() {

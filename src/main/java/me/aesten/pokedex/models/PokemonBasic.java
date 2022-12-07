@@ -1,20 +1,15 @@
 package me.aesten.pokedex.models;
 
-public class Pokemon {
+public class PokemonBasic {
     private String name;
-    private String description;
     private Integer weight;
     private Integer height;
 
-    public Pokemon(String name, String description, Integer weight, Integer height) {
+
+    public PokemonBasic(String name, Integer weight, Integer height) {
         this.name = name;
-        this.description = description;
         this.weight = weight;
         this.height = height;
-    }
-
-    public Pokemon(String name, Integer weight, Integer height) {
-        this(name, null, weight, height);
     }
 
     public String getName() {
@@ -23,14 +18,6 @@ public class Pokemon {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Integer getWeight() {
