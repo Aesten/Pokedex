@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HttpPokemonResponse implements PokemonDataMap{
+public class HttpPokemonResponse implements PokemonMap{
     private final CloseableHttpResponse httpResponse;
 
     public HttpPokemonResponse(CloseableHttpResponse httpResponse) {

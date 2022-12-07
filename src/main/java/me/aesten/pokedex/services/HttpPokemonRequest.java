@@ -13,7 +13,7 @@ public class HttpPokemonRequest{
         return new HttpPokemonRequest(1);
     }
 
-    public HttpPokemonRequest(int requestPokemonId) {
+    private HttpPokemonRequest(int requestPokemonId) {
         this.requestPokemonId = requestPokemonId;
     }
 

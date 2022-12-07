@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SqlPokemonResponse implements PokemonDataMap{
+public class SqlPokemonResponse implements PokemonMap{
     private final ResultSet response;
 
     public SqlPokemonResponse(ResultSet response) {

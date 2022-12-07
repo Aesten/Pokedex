@@ -10,7 +10,7 @@ public class SqlPokemonRequest {
         return new SqlPokemonRequest(1);
     }
 
-    public SqlPokemonRequest(int requestPokemonId) {
+    private SqlPokemonRequest(int requestPokemonId) {
         this.requestPokemonId = requestPokemonId;
     }
 
@@ -27,7 +27,7 @@ public class SqlPokemonRequest {
     public SqlPokemonResponse run() {
         try {
             // db parameters
-            String url = "jdbc:sqlite:./src/main/java/resources/pokemondatabase.sqlite";
+            String url = "jdbc:sqlite:./src/main/resources/pokemondatabase.sqlite";
             // create a connection to the database
             Connection conn = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established.");
