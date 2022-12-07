@@ -9,6 +9,6 @@ public class PokedexTest {
     @Test
     public void getName() {
         Pokedex pokedex = new Pokedex();
-        assertEquals("Hello", pokedex.getName());
+        assertEquals("Pokedex", pokedex.getName());
     }
 }

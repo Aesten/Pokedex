@@ -8,11 +8,11 @@ public class Pokedex {
         if (args.length > 0) {
             System.out.println("Vous avez fourni l'argument " + args[0]);
         }
-        SQLLiteExample.run();
-        HTTPRequestExample.run();
+        //SQLLiteExample.run();
+        //HTTPRequestExample.run();
     }
 
     public String getName() {
-        return "Hello";
+        return "Pokedex";
     }
 }
