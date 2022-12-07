@@ -18,5 +18,5 @@ dependencies {
 }
 
 application {
-    mainClassName = 'me.aesten.pokedex.Pokedex'
+    mainClass.set('me.aesten.pokedex.Pokedex')
 }

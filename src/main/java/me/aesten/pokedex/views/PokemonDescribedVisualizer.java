@@ -10,10 +10,20 @@ public class PokemonDescribedVisualizer extends PokemonBasicVisualizer{
         this.description = pokemon.getDescription();
     }
 
-    public void print() {
-        System.out.println("name: " + name);
-        System.out.println("description: " + description);
-        System.out.println("weight: " + weight);
-        System.out.println("height: " + height);
+    @Override
+    public String log() {
+        return super.log() +
+                "\ndescription: " + description;
+    }
+
+    @Override
+    public String logHtml() {
+        return "<h1>" + name + "</h1>" +
+                "\n<ul>" +
+                "\n\t<li>" + "id: " + id + "</li>" +
+                "\n\t<li>" + "height: " + height + "</li>" +
+                "\n\t<li>" + "weight: " + weight + "</li>" +
+                "\n\t<li>" + "description: " + description + "</li>" +
+                "\n</ul>";
     }
 }

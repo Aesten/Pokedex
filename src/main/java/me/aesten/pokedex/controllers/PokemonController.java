@@ -6,13 +6,20 @@ import me.aesten.pokedex.services.PokemonMap;
 
 import java.util.Map;
 
-public class PokemonDescribedMapper {
-    public PokemonDescribed map(PokemonMap pokemonMap) {
+public class PokemonController {
+    public PokemonBasic map(PokemonMap pokemonMap) {
         Map<String, Object> dataMap = pokemonMap.getAsMap();
+        Integer id = (Integer) dataMap.get("id");
         String name = (String) dataMap.get("name");
         String description = (String) dataMap.get("description");
         Integer weight = (Integer) dataMap.get("weight");
         Integer height = (Integer) dataMap.get("height");
-        return new PokemonDescribed(name, weight, height, description);
+        if (description != null) {
+            return new PokemonDescribed(id, name, weight, height, description);
+        }
+        else {
+            return new PokemonBasic(id, name, weight, height);
+        }
     }
+
 }

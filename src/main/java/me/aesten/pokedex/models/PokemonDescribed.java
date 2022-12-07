@@ -2,8 +2,8 @@ package me.aesten.pokedex.models;
 
 public class PokemonDescribed extends PokemonBasic{
     private String description;
-    public PokemonDescribed(String name, Integer weight, Integer height, String description) {
-        super(name, weight, height);
+    public PokemonDescribed(int id, String name, Integer weight, Integer height, String description) {
+        super(id, name, weight, height);
         this.description = description;
     }
 

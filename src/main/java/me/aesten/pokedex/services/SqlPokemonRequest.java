@@ -1,50 +1,50 @@
 package me.aesten.pokedex.services;
 
-import java.sql.*;
-
 public class SqlPokemonRequest {
-    private Integer requestPokemonId;
-    private String databaseFileName;
-    private String request;
+    private final String databaseFileName;
+    private final String SqlRequest;
 
-    public static SqlPokemonRequest create() {
-        return new SqlPokemonRequest(1, "pokemondatabase.sqlite");
-    }
-
-    private SqlPokemonRequest(int requestPokemonId, String databaseFileName) {
-        this.requestPokemonId = requestPokemonId;
+    public SqlPokemonRequest(String databaseFileName, String SqlRequest) {
         this.databaseFileName = databaseFileName;
+        this.SqlRequest = SqlRequest;
     }
 
-    public SqlPokemonRequest setRequestPokemonId(int id) {
-        requestPokemonId = id;
-        return this;
+    public static Builder builder() {
+        return new Builder(1, "pokemondatabase.sqlite");
     }
 
-    public SqlPokemonRequest setRequestDatabase(String databaseFileName) {
-        this.databaseFileName = databaseFileName;
-        return this;
+
+    public String getDatabaseFileName() {
+        return databaseFileName;
     }
 
-    public SqlPokemonRequest build() {
-        request = "SELECT * FROM pokemons WHERE id = " + requestPokemonId;
-        return this;
+    public String getSqlRequest() {
+        return SqlRequest;
     }
 
-    public SqlPokemonResponse run() {
-        try {
-            // db parameters
-            String url = "jdbc:sqlite:./src/main/resources/" + databaseFileName;
-            // create a connection to the database
-            Connection conn = DriverManager.getConnection(url);
-            System.out.println("Connection to SQLite has been established.");
+    public static class Builder {
+        private Integer requestPokemonId;
+        private String databaseFileName;
 
-            PreparedStatement stmt = conn.prepareStatement(request);
-            ResultSet rs = stmt.executeQuery();
-            rs.next();
-            return new SqlPokemonResponse(rs);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        private Builder(int requestPokemonId, String databaseFileName) {
+            this.requestPokemonId = requestPokemonId;
+            this.databaseFileName = databaseFileName;
         }
+
+        public Builder setRequestPokemonId(int id) {
+            requestPokemonId = id;
+            return this;
+        }
+
+        public Builder setRequestDatabase(String databaseFileName) {
+            this.databaseFileName = databaseFileName;
+            return this;
+        }
+
+        public SqlPokemonRequest build() {
+            String SqlRequest = "SELECT * FROM pokemons WHERE id = " + requestPokemonId;
+            return new SqlPokemonRequest(databaseFileName, SqlRequest);
+        }
+
     }
 }
