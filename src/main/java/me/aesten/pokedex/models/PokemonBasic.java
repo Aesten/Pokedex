@@ -6,7 +6,6 @@ public class PokemonBasic {
     private Integer weight;
     private Integer height;
 
-
     public PokemonBasic(int id, String name, Integer weight, Integer height) {
         this.id = id;
         this.name = name;

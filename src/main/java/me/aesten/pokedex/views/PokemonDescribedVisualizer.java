@@ -10,12 +10,24 @@ public class PokemonDescribedVisualizer extends PokemonBasicVisualizer{
         this.description = pokemon.getDescription();
     }
 
+    /**
+     * Returns the information of the PokemonDescribed.
+     * Method implementation from the Logger interface.
+     *
+     * @return a String describing the PokemonDescribed
+     */
     @Override
     public String log() {
         return super.log() +
                 "\ndescription: " + description;
     }
 
+    /**
+     * Returns the information of the PokemonDescribed with html formatting.
+     * Method implementation from the HtmlLogger interface.
+     *
+     * @return a String describing the PokemonDescribed with html formatting
+     */
     @Override
     public String logHtml() {
         return "<h1>" + name + "</h1>" +

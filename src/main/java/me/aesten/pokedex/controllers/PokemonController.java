@@ -7,6 +7,14 @@ import me.aesten.pokedex.services.PokemonFetcher;
 import java.util.Map;
 
 public class PokemonController {
+    /**
+     * Maps a PokemonFetcher to a Pokemon.
+     * The returned instance can be a PokemonBasic or PokemonDescribed depending on whether
+     * there is a description or not.
+     *
+     * @param pokemonFetcher an implementation of the PokemonFetcher interface
+     * @return the Pokemon instance identified from the fetcher
+     */
     public PokemonBasic map(PokemonFetcher pokemonFetcher) {
         Map<String, Object> dataMap = pokemonFetcher.getAsMap();
         Integer id = (Integer) dataMap.get("id");
@@ -14,12 +22,7 @@ public class PokemonController {
         String description = (String) dataMap.get("description");
         Integer weight = (Integer) dataMap.get("weight");
         Integer height = (Integer) dataMap.get("height");
-        if (description != null) {
-            return new PokemonDescribed(id, name, weight, height, description);
-        }
-        else {
-            return new PokemonBasic(id, name, weight, height);
-        }
+        //return a PokemonDescribed if the description exists, a PokemonBasic otherwise
+        return description != null ? new PokemonDescribed(id, name, weight, height, description) : new PokemonBasic(id, name, weight, height);
     }
-
 }

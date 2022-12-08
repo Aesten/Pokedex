@@ -10,6 +10,11 @@ public class HttpPokemonRequest{
         this.httpRequest = httpRequest;
     }
 
+    /**
+     * Calls a HttpPokemonRequestBuilder. You cannot directly use the constructor for the HttpPokemonRequest.
+     *
+     * @return an HttpPokemonRequestBuilder
+     */
     public static Builder builder() {
         return new Builder(1);
     }
@@ -18,6 +23,9 @@ public class HttpPokemonRequest{
         return httpRequest;
     }
 
+    /**
+     * The HttpPokemonRequestBuilder allows to prepare a HttpGet request.
+     */
     public static class Builder {
         private Integer requestPokemonId;
 

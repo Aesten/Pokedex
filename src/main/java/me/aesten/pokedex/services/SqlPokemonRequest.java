@@ -9,6 +9,11 @@ public class SqlPokemonRequest {
         this.SqlRequest = SqlRequest;
     }
 
+    /**
+     * Calls a SqlPokemonRequestBuilder. You cannot directly use the constructor for the SqlPokemonRequest.
+     *
+     * @return a SqlPokemonRequestBuilder
+     */
     public static Builder builder() {
         return new Builder(1, "pokemondatabase.sqlite");
     }
@@ -22,6 +27,9 @@ public class SqlPokemonRequest {
         return SqlRequest;
     }
 
+    /**
+     * The SqlPokemonRequestBuilder allows to prepare a sql request.
+     */
     public static class Builder {
         private Integer requestPokemonId;
         private String databaseFileName;

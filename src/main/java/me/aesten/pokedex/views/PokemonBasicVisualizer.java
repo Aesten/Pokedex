@@ -17,6 +17,12 @@ public class PokemonBasicVisualizer implements Logger, HtmlLogger {
         this.height = pokemon.getHeight();
     }
 
+    /**
+     * Returns the information of the PokemonBasic.
+     * Method implementation from the Logger interface.
+     *
+     * @return a String describing the PokemonBasic
+     */
     @Override
     public String log() {
         return "name: " + name +
@@ -25,6 +31,12 @@ public class PokemonBasicVisualizer implements Logger, HtmlLogger {
                 "\nheight: " + height;
     }
 
+    /**
+     * Returns the information of the PokemonBasic with html formatting.
+     * Method implementation from the HtmlLogger interface.
+     *
+     * @return a String describing the PokemonBasic with html formatting
+     */
     @Override
     public String logHtml() {
         return "<h1>" + name + "</h1>" +

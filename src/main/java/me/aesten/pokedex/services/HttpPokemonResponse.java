@@ -17,6 +17,13 @@ public class HttpPokemonResponse implements PokemonFetcher {
         this.httpResponse = httpResponse;
     }
 
+    /**
+     * Runs the HttpPokemonRequest to fetch a Pokemon from the web.
+     * The corresponding HttpPokemonResponse is returned.
+     *
+     * @param request the HttpPokemonRequest for fetching the Pokemon
+     * @return the corresponding HttpPokemonResponse
+     */
     public static HttpPokemonResponse run(HttpPokemonRequest request) {
         try {
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -27,6 +34,12 @@ public class HttpPokemonResponse implements PokemonFetcher {
         }
     }
 
+    /**
+     * Converts the received json file to a java Map object.
+     * Implementation of a method in the Pokemon Fetcher interface.
+     *
+     * @return a Map&lt;java.lang.String, java.lang.Object&gt; containing fetched information
+     */
     @Override
     public Map<String, Object> getAsMap() {
         String jsonResponse = "";

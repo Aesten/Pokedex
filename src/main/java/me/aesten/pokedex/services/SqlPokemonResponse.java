@@ -1,5 +1,6 @@
 package me.aesten.pokedex.services;
 
+import java.net.URL;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,10 +12,18 @@ public class SqlPokemonResponse implements PokemonFetcher {
         this.response = response;
     }
 
+    /**
+     * Runs the SqlPokemonRequest to fetch a Pokemon from a database.
+     * The corresponding SqlPokemonResponse is returned.
+     *
+     * @param request the SqlPokemonRequest for fetching the Pokemon
+     * @return the corresponding SqlPokemonResponse
+     */
     public static SqlPokemonResponse run(SqlPokemonRequest request) {
         try {
-            // db parameters
-            String url = "jdbc:sqlite:./src/main/resources/" + request.getDatabaseFileName();
+            // database parameters
+            // this only works when runnin
+            String url = "jdbc:sqlite:./" + request.getDatabaseFileName();
             // create a connection to the database
             Connection conn = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established.");
@@ -28,6 +37,12 @@ public class SqlPokemonResponse implements PokemonFetcher {
         }
     }
 
+    /**
+     * Converts the received sql data to a java Map object.
+     * Implementation of a method in the Pokemon Fetcher interface.
+     *
+     * @return a Map&lt;java.lang.String, java.lang.Object&gt; containing fetched information
+     */
     @Override
     public Map<String, Object> getAsMap() {
         try {
