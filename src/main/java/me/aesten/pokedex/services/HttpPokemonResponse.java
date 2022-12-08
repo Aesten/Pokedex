@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HttpPokemonResponse implements PokemonMap{
+public class HttpPokemonResponse implements PokemonFetcher {
     private final CloseableHttpResponse httpResponse;
 
     private HttpPokemonResponse(CloseableHttpResponse httpResponse) {

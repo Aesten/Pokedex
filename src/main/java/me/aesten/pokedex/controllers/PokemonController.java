@@ -2,13 +2,13 @@ package me.aesten.pokedex.controllers;
 
 import me.aesten.pokedex.models.PokemonBasic;
 import me.aesten.pokedex.models.PokemonDescribed;
-import me.aesten.pokedex.services.PokemonMap;
+import me.aesten.pokedex.services.PokemonFetcher;
 
 import java.util.Map;
 
 public class PokemonController {
-    public PokemonBasic map(PokemonMap pokemonMap) {
-        Map<String, Object> dataMap = pokemonMap.getAsMap();
+    public PokemonBasic map(PokemonFetcher pokemonFetcher) {
+        Map<String, Object> dataMap = pokemonFetcher.getAsMap();
         Integer id = (Integer) dataMap.get("id");
         String name = (String) dataMap.get("name");
         String description = (String) dataMap.get("description");

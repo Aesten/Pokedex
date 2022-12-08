@@ -2,7 +2,7 @@ package me.aesten.pokedex.controllers;
 
 import me.aesten.pokedex.models.PokemonBasic;
 import me.aesten.pokedex.models.PokemonDescribed;
-import me.aesten.pokedex.services.PokemonMap;
+import me.aesten.pokedex.services.PokemonFetcher;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class PokemonsControllerTest {
+public class PokemonControllerTest {
     @Test
     public void getPokemon() {
         PokemonController controller = new PokemonController();
@@ -34,7 +34,7 @@ public class PokemonsControllerTest {
 
     }
 
-    static class PokemonFetcherMock implements PokemonMap {
+    static class PokemonFetcherMock implements PokemonFetcher {
 
         @Override
         public Map<String, Object> getAsMap() {

@@ -8,8 +8,8 @@ import me.aesten.pokedex.services.HttpPokemonRequest;
 import me.aesten.pokedex.services.HttpPokemonResponse;
 import me.aesten.pokedex.services.SqlPokemonRequest;
 import me.aesten.pokedex.services.SqlPokemonResponse;
-import me.aesten.pokedex.utilities.ConsoleLogUtility;
-import me.aesten.pokedex.utilities.FileLogUtility;
+import me.aesten.pokedex.utilities.ConsoleLogger;
+import me.aesten.pokedex.utilities.FileLogger;
 import me.aesten.pokedex.views.PokemonBasicVisualizer;
 import me.aesten.pokedex.views.PokemonDescribedVisualizer;
 
@@ -33,10 +33,10 @@ public class Pokedex {
             PokemonBasicVisualizer visualizer = new PokemonBasicVisualizer(pokemon);
 
             System.out.println("===================");
-            ConsoleLogUtility.log(visualizer);
+            ConsoleLogger.log(visualizer);
             System.out.println("===================");
 
-            FileLogUtility.saveLog(gradleBuildPath + File.separator + "basic" + id + ".html", visualizer);
+            FileLogger.saveLog(gradleBuildPath + File.separator + "basic" + id + ".html", visualizer);
         }
 
         else if (args.length == 2) {
@@ -50,10 +50,10 @@ public class Pokedex {
             PokemonDescribedVisualizer visualizer = new PokemonDescribedVisualizer(pokemon);
 
             System.out.println("===================");
-            ConsoleLogUtility.log(visualizer);
+            ConsoleLogger.log(visualizer);
             System.out.println("===================");
 
-            FileLogUtility.saveLog(gradleBuildPath + File.separator + "described" + id + ".html", visualizer);
+            FileLogger.saveLog(gradleBuildPath + File.separator + "described" + id + ".html", visualizer);
         }
 
         else {
