@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.1'
     implementation group:'org.xerial', name:'sqlite-jdbc', version:'3.8.11.2'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
@@ -19,4 +19,14 @@ dependencies {
 
 application {
     mainClass.set('me.aesten.pokedex.Pokedex')
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'me.aesten.pokedex.Pokedex'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
