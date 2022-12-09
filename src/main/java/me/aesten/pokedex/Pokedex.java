@@ -9,7 +9,8 @@ import me.aesten.pokedex.services.HttpPokemonResponse;
 import me.aesten.pokedex.services.SqlPokemonRequest;
 import me.aesten.pokedex.services.SqlPokemonResponse;
 import me.aesten.pokedex.utilities.ConsoleLogger;
-import me.aesten.pokedex.utilities.FileLogger;
+import me.aesten.pokedex.utilities.LogSaver;
+import me.aesten.pokedex.utilities.Logger;
 import me.aesten.pokedex.views.PokemonBasicVisualizer;
 import me.aesten.pokedex.views.PokemonDescribedVisualizer;
 
@@ -31,6 +32,7 @@ public class Pokedex {
             System.exit(0);
         }
 
+        //Case 1 argument: http request
         else if (args.length == 1) {
             int id;
             try{id = Integer.parseInt(args[0]);}
@@ -44,13 +46,11 @@ public class Pokedex {
             PokemonBasicVisualizer visualizer = new PokemonBasicVisualizer(pokemon);
 
             //Logging
-            System.out.println("===================");
-            ConsoleLogger.log(visualizer);
-            System.out.println("===================");
-
-            FileLogger.saveLog(savePath + File.separator + "basic" + id + ".html", visualizer);
+            printLogs(visualizer);
+            LogSaver.saveLog(savePath + File.separator + "basic-" + id + ".html", visualizer);
         }
 
+        //Case 2 arguments: sql request
         else if (args.length == 2) {
             int id;
             try{id = Integer.parseInt(args[0]);}
@@ -65,11 +65,8 @@ public class Pokedex {
             PokemonDescribedVisualizer visualizer = new PokemonDescribedVisualizer(pokemon);
 
             //Logging
-            System.out.println("===================");
-            ConsoleLogger.log(visualizer);
-            System.out.println("===================");
-
-            FileLogger.saveLog(savePath + File.separator + "described" + id + ".html", visualizer);
+            printLogs(visualizer);
+            LogSaver.saveLog(savePath + File.separator + "described-" + id + ".html", visualizer);
         }
 
         else {
@@ -80,5 +77,11 @@ public class Pokedex {
 
     public String getName() {
         return "Pokedex";
+    }
+
+    private static void printLogs(Logger logger) {
+        System.out.println("===================");
+        ConsoleLogger.log(logger);
+        System.out.println("===================");
     }
 }
