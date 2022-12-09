@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A service to send an http request to fetch a Pokemon.
+ * A service to send a http request to fetch a Pokemon.
  * Implements PokemonFetcher.
  */
 public class HttpPokemonResponse implements PokemonFetcher {

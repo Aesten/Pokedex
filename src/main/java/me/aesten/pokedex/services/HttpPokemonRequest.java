@@ -3,7 +3,7 @@ package me.aesten.pokedex.services;
 import org.apache.http.client.methods.HttpGet;
 
 /**
- * A service which allows to generate an html request.
+ * A service which allows to generate a html request.
  * It has to be passed to HttpPokemonResponse to be used.
  */
 public class HttpPokemonRequest{

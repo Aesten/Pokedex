@@ -1,7 +1,7 @@
 package me.aesten.pokedex.services;
 
 /**
- * A service which allows to generate an sql request.
+ * A service which allows to generate a sql request.
  * It has to be passed to SqlPokemonResponse to be used.
  */
 public class SqlPokemonRequest {

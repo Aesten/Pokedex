@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A service to send an sql request to fetch a Pokemon.
+ * A service to send a sql request to fetch a Pokemon.
  * Implements PokemonFetcher.
  */
 public class SqlPokemonResponse implements PokemonFetcher {
@@ -25,7 +25,6 @@ public class SqlPokemonResponse implements PokemonFetcher {
     public static SqlPokemonResponse run(SqlPokemonRequest request) {
         try {
             // database parameters
-            // this only works when runnin
             String url = "jdbc:sqlite:./" + request.getDatabaseFileName();
             // create a connection to the database
             Connection conn = DriverManager.getConnection(url);
