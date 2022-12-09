@@ -1,5 +1,8 @@
 package me.aesten.pokedex.models;
 
+/**
+ * A simple Pokemon model class
+ */
 public class PokemonBasic {
     private int id;
     private String name;

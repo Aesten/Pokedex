@@ -2,6 +2,9 @@ package me.aesten.pokedex.views;
 
 import me.aesten.pokedex.models.PokemonDescribed;
 
+/**
+ * A view for PokemonDescribed which has the additional 'description' field
+ */
 public class PokemonDescribedVisualizer extends PokemonBasicVisualizer{
     private final String description;
 
@@ -30,11 +33,8 @@ public class PokemonDescribedVisualizer extends PokemonBasicVisualizer{
      */
     @Override
     public String logHtml() {
-        return "<h1>" + name + "</h1>" +
-                "\n<ul>" +
-                "\n\t<li>" + "id: " + id + "</li>" +
-                "\n\t<li>" + "height: " + height + "</li>" +
-                "\n\t<li>" + "weight: " + weight + "</li>" +
+        String partialLog = super.logHtml();
+        return partialLog.substring(0, partialLog.length()-6) +
                 "\n\t<li>" + "description: " + description + "</li>" +
                 "\n</ul>";
     }

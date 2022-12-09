@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A service to send an http request to fetch a Pokemon.
+ * Implements PokemonFetcher.
+ */
 public class HttpPokemonResponse implements PokemonFetcher {
     private final CloseableHttpResponse httpResponse;
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class FileLogger {
+public class LogSaver {
     public static void saveLog(String filePath, HtmlLogger htmlLogger) {
         try {
             Files.writeString(Paths.get(filePath), htmlLogger.logHtml());

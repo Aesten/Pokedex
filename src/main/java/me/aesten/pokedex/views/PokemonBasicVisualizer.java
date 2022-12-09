@@ -4,6 +4,9 @@ import me.aesten.pokedex.models.PokemonBasic;
 import me.aesten.pokedex.utilities.HtmlLogger;
 import me.aesten.pokedex.utilities.Logger;
 
+/**
+ * A view for PokemonBasic, which implements Logger and HtmlLogger
+ */
 public class PokemonBasicVisualizer implements Logger, HtmlLogger {
     protected final int id;
     protected final String name;

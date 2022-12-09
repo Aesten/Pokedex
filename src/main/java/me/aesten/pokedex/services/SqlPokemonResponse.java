@@ -1,10 +1,13 @@
 package me.aesten.pokedex.services;
 
-import java.net.URL;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A service to send an sql request to fetch a Pokemon.
+ * Implements PokemonFetcher.
+ */
 public class SqlPokemonResponse implements PokemonFetcher {
     private final ResultSet response;
 

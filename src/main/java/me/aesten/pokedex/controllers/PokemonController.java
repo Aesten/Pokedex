@@ -6,6 +6,9 @@ import me.aesten.pokedex.services.PokemonFetcher;
 
 import java.util.Map;
 
+/**
+ * A controller to map fetched information to an instance.
+ */
 public class PokemonController {
     /**
      * Maps a PokemonFetcher to a Pokemon.
