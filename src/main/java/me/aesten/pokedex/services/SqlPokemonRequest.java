@@ -1,10 +1,14 @@
 package me.aesten.pokedex.services;
 
+/**
+ * A service which allows to generate an sql request.
+ * It has to be passed to SqlPokemonResponse to be used.
+ */
 public class SqlPokemonRequest {
     private final String databaseFileName;
     private final String SqlRequest;
 
-    public SqlPokemonRequest(String databaseFileName, String SqlRequest) {
+    private SqlPokemonRequest(String databaseFileName, String SqlRequest) {
         this.databaseFileName = databaseFileName;
         this.SqlRequest = SqlRequest;
     }
@@ -15,7 +19,7 @@ public class SqlPokemonRequest {
      * @return a SqlPokemonRequestBuilder
      */
     public static Builder builder() {
-        return new Builder(1, "pokemondatabase.sqlite");
+        return new Builder();
     }
 
 
@@ -34,10 +38,7 @@ public class SqlPokemonRequest {
         private Integer requestPokemonId;
         private String databaseFileName;
 
-        private Builder(int requestPokemonId, String databaseFileName) {
-            this.requestPokemonId = requestPokemonId;
-            this.databaseFileName = databaseFileName;
-        }
+        private Builder() {}
 
         public Builder setRequestPokemonId(int id) {
             requestPokemonId = id;

@@ -2,7 +2,10 @@ package me.aesten.pokedex.services;
 
 import org.apache.http.client.methods.HttpGet;
 
-
+/**
+ * A service which allows to generate an html request.
+ * It has to be passed to HttpPokemonResponse to be used.
+ */
 public class HttpPokemonRequest{
     private final HttpGet httpRequest;
 
@@ -16,7 +19,7 @@ public class HttpPokemonRequest{
      * @return an HttpPokemonRequestBuilder
      */
     public static Builder builder() {
-        return new Builder(1);
+        return new Builder();
     }
 
     public HttpGet getHttpRequest() {
@@ -29,8 +32,7 @@ public class HttpPokemonRequest{
     public static class Builder {
         private Integer requestPokemonId;
 
-        public Builder(int id) {
-            requestPokemonId = id;
+        public Builder() {
         }
 
         public Builder setRequestPokemonId(int id) {
