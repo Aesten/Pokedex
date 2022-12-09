@@ -18,6 +18,7 @@ To run the application with command line arguments :
 ./gradlew run --args="premierArgument secondArgument"
 ```
 
+The html log files should appear with a new 'output' directory.
 
 # Run the tests
 
